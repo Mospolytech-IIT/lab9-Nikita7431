@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Посты</title>
+</head>
+<body>
+    <h1>Посты</h1>
+    <form action="/posts/create" method="post">
+        <input type="text" name="title" placeholder="Заголовок поста" required>
+        <textarea name="content" placeholder="Содержимое поста" required></textarea>
+        <input type="number" name="user_id" placeholder="ID пользователя" required>
+        <button type="submit">Добавить пост</button>
+    </form>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <strong>{{ post.title }}</strong> ({{ post.author.username }})<br>
+                {{ post.content }}<br>
+                <a href="/posts/edit/{{ post.id }}">Редактировать</a>
+                <a href="/posts/delete/{{ post.id }}">Удалить</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Назад к пользователям</a>
+</body>
+</html>

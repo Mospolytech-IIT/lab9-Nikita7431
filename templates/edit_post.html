@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование поста</title>
+</head>
+<body>
+    <h1>Редактирование поста</h1>
+    <form action="/posts/update/{{ post.id }}" method="post">
+        <input type="text" name="title" value="{{ post.title }}" required>
+        <textarea name="content" required>{{ post.content }}</textarea>
+        <label for="user_id">Пользователь:</label>
+        <select name="user_id" id="user_id" required>
+            {% for user in users %}
+                <option value="{{ user.id }}" {% if user.id == post.user_id %}selected{% endif %}>
+                    {{ user.username }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+    <a href="/posts">Назад к списку постов</a>
+</body>
+</html>

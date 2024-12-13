@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование пользователя</title>
+</head>
+<body>
+    <h1>Редактирование пользователя</h1>
+    <form action="/users/update/{{ user.id }}" method="post">
+        <input type="text" name="username" value="{{ user.username }}" required>
+        <input type="email" name="email" value="{{ user.email }}" required>
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
